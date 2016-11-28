@@ -1,0 +1,52 @@
+study	vowel	f1	f2	gender
+Hagiwara (1997)	i	362	2897	female
+Hagiwara (1997)	I	467	2400	female
+Hagiwara (1997)	e	440	2655	female
+Hagiwara (1997)	E	808	2163	female
+Hagiwara (1997)	ae	1017	1810	female
+Hagiwara (1997)	u	395	1700	female
+Hagiwara (1997)	U	486	1665	female
+Hagiwara (1997)	o	516	1391	female
+Hagiwara (1997)	a	997	1390	female
+Hagiwara (1997)	^	847	1753	female
+Hagiwara (1997)	er	477	1558	female
+Hagiwara (1997)	i	291	2338	male
+Hagiwara (1997)	I	418	1807	male
+Hagiwara (1997)	e	403	2059	male
+Hagiwara (1997)	E	529	1670	male
+Hagiwara (1997)	ae	685	1601	male
+Hagiwara (1997)	u	323	1417	male
+Hagiwara (1997)	U	441	1366	male
+Hagiwara (1997)	o	437	1188	male
+Hagiwara (1997)	a	710	1221	male
+Hagiwara (1997)	^	574	1415	male
+Hagiwara (1997)	er	429	1362	male
+Hillenbrand et al. (1995)	i	342	2322	male
+Hillenbrand et al. (1995)	I	427	2034	male
+Hillenbrand et al. (1995)	e	476	2089	male
+Hillenbrand et al. (1995)	E	580	1799	male
+Hillenbrand et al. (1995)	ae	588	1952	male
+Hillenbrand et al. (1995)	a	768	1333	male
+Hillenbrand et al. (1995)	c	652	997	male
+Hillenbrand et al. (1995)	o	497	910	male
+Hillenbrand et al. (1995)	U	469	1122	male
+Hillenbrand et al. (1995)	u	378	997	male
+Hillenbrand et al. (1995)	^	623	1200	male
+Hillenbrand et al. (1995)	er	474	1379	male
+Hillenbrand et al. (1995)	i	437	2761	female
+Hillenbrand et al. (1995)	I	483	2365	female
+Hillenbrand et al. (1995)	e	536	2530	female
+Hillenbrand et al. (1995)	E	731	2058	female
+Hillenbrand et al. (1995)	ae	669	2349	female
+Hillenbrand et al. (1995)	a	936	1551	female
+Hillenbrand et al. (1995)	c	781	1136	female
+Hillenbrand et al. (1995)	o	555	1035	female
+Hillenbrand et al. (1995)	U	519	1225	female
+Hillenbrand et al. (1995)	u	459	1105	female
+Hillenbrand et al. (1995)	ʌ	753	1426	female
+Hillenbrand et al. (1995)	er	523	1588	female
+Bradlow (1995)	i	286	2147	male
+Bradlow (1995)	e	458	1814	male
+Bradlow (1995)	a	638	1353	male
+Bradlow (1995)	o	460	1019	male
+Bradlow (1995)	u	322	992	male
