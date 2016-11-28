@@ -45,8 +45,3 @@ Hillenbrand et al. (1995)	U	519	1225	female
 Hillenbrand et al. (1995)	u	459	1105	female
 Hillenbrand et al. (1995)	ʌ	753	1426	female
 Hillenbrand et al. (1995)	er	523	1588	female
-Bradlow (1995)	i	286	2147	male
-Bradlow (1995)	e	458	1814	male
-Bradlow (1995)	a	638	1353	male
-Bradlow (1995)	o	460	1019	male
-Bradlow (1995)	u	322	992	male
