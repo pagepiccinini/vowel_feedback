@@ -25,8 +25,10 @@ ui <- fluidPage(
   # Add top descriptor information
   tags$h1("Different Vowel Plot Datasets by Gender"),
   tags$p("This are the vowel spaces of American English from two papers for both males and females.",
-         tags$a(href="", "Hillenbrand et al. (1995)"), "reports values for what was labeled general American English,
-         while", tags$a(href="", "Hagiwara (1997)"), "is for Southern Californian English."),
+         tags$a(href="http://scitation.aip.org/content/asa/journal/jasa/97/5/10.1121/1.411872", "Hillenbrand et al. (1995)"),
+         "reports values for what was labeled general American English, while",
+         tags$a(href="http://scitation.aip.org/content/asa/journal/jasa/102/1/10.1121/1.419712", "Hagiwara (1997)"),
+         "is for Southern Californian English."),
   
   # Set-up layout of main part of page
   sidebarLayout(
