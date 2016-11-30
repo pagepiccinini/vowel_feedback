@@ -27,9 +27,14 @@ formants_extracter = function(vowelfile, formant_arguments) {
         filetype = "tab-separated")
   
   read.table(file = table_loc, header=TRUE, sep="\t", na.strings="--undefined--" ) %>%
-    gather(formant, value, F1.Hz.:B5.Hz.) %>%
-    filter(formant == "F1.Hz." | formant == "F2.Hz." | formant == "F3.Hz.") %>%
-    mutate(formant = factor(formant, levels = c("F1.Hz.", "F2.Hz.", "F3.Hz."),
-                            labels = c("F1", "F2", "F3"))) %>%
-    mutate(time_s = time.s. + vowelfile$time_start[line])
+    select(time.s., F1.Hz., F2.Hz.) %>%
+    rename(time = time.s.) %>%
+    rename(f1 = F1.Hz.) %>%
+    rename(f2 = F2.Hz.) %>%
+    mutate(vowel = vowel) %>%
+    mutate(gender = gender)
+#    gather(formant, value, F1.Hz.:B5.Hz.) %>%
+#    filter(formant == "F1.Hz." | formant == "F2.Hz." | formant == "F3.Hz.") %>%
+ #   mutate(formant = factor(formant, levels = c("F1.Hz.", "F2.Hz.", "F3.Hz."),
+                           # labels = c("f1", "f2", "f3")))
 }
