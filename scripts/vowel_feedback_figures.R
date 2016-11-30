@@ -1,9 +1,18 @@
 ## READ IN DATA ####
-data_proto = read.table("data/data_prototypes.txt", header=T, sep="\t")
+data_proto = read.table("data/data_prototypes.txt", header=T, sep="\t") %>%
+  mutate(vowel_ipa = if_else(vowel == "E", "ɛ",
+                     if_else(vowel == "I", "ɪ",
+                     if_else(vowel == "ae", "æ",
+                     if_else(vowel == "U", "ʊ",
+                     if_else(vowel == "^", "ʌ",
+                     if_else(vowel == "a", "ɑ",
+                     if_else(vowel == "c", "ɔ",
+                     if_else(vowel == "er", "ɝ",as.character(vowel))))))))))
 
 data_formants_clean = data_formants %>%
   filter(time > 0.1) %>%
-  filter(time < 0.4)
+  filter(time < 0.4) %>%
+  mutate(vowel_ipa = vowel)
 
 
 ## MAKE FIGURE ####
@@ -13,7 +22,7 @@ data_proto %>%
   # Set gender
   filter(gender == "male") %>%
   # Make plot
-  ggplot(aes(x = f2, y = f1, label = vowel)) +
+  ggplot(aes(x = f2, y = f1, label = vowel_ipa)) +
   geom_point(size = 4) +
   geom_text(nudge_x = 60, nudge_y = -20, size = 6) +
   geom_segment(aes(x = max(f2) + 150, xend = max(f2) - ((max(f2) - min(f2)) / 2),
