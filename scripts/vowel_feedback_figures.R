@@ -10,13 +10,19 @@ data_proto = read.table("data/data_prototypes.txt", header=T, sep="\t") %>%
                      if_else(vowel == "er", "ɝ",as.character(vowel))))))))))
 
 data_formants_clean = data_formants %>%
-  filter(time > 0.1) %>%
-  filter(time < 0.4) %>%
-  mutate(vowel_ipa = vowel)
+  #filter(time > 0.1) %>%
+  #filter(time < 0.4) %>%
+  mutate(vowel_ipa = vowel) %>%
+  mutate(bin = floor(time / 0.5)) %>%
+  group_by(vowel_ipa, bin) %>%
+  summarise(f1_median  = median(f1, na.rm = T),
+            f2_median = median(f2, na.rm = T)) %>%
+  ungroup()
 
 
 ## MAKE FIGURE ####
-data_proto %>%
+# Make base plot
+base.plot = data_proto %>%
   # Set study
   filter(study == "Hagiwara (1997)") %>%
   # Set gender
@@ -36,10 +42,14 @@ data_proto %>%
   scale_x_reverse() +
   scale_y_reverse() +
   theme_void() +
-  theme(text = element_text(size = 16)) +
-  # Add speaker vowel
-  geom_point(data = data_formants_clean, aes(x = f2, y = f1), color = "red") +
-  geom_path(data = data_formants_clean, aes(x = f2, y = f1), arrow = arrow(), color = "red")
+  theme(text = element_text(size = 16))
+
+# Add speaker vowel
+base.plot +
+  geom_point(data = data_formants_clean, aes(x = f2_median, y = f1_median),
+             color = "red", size = 3) +
+  geom_path(data = data_formants_clean, aes(x = f2_median, y = f1_median),
+            arrow = arrow(), color = "red", lwd = 1)
   
   
   
