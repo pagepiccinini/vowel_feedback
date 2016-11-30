@@ -1,6 +1,10 @@
 ## LOAD PACKAGES ####
 library(shiny)
-library(tidyverse)
+source("scripts/vowel_feedback_packages.R")
+
+
+## LOAD FUNCTIONS ####
+source("scripts/vowel_feedback_functions.R")
 
 
 ## READ IN DATA AND ORGANIZE ####
@@ -42,7 +46,11 @@ ui <- fluidPage(
       
       # Add space for gender            
       selectInput(inputId = "gender", label = "Gender",
-                  choices = c(levels(data_proto$gender)))
+                  choices = c(levels(data_proto$gender))),
+      
+      # Upload sound file
+      fileInput("sound_file", "Choose WAV File")
+      
     ),
     
     # Add main panel
@@ -66,6 +74,33 @@ server <- function(input, output) {
       filter(study == input$study) %>%
       # Set gender
       filter(gender == input$gender)
+  })
+  
+  # Variables of file to read in
+  vowel = "e"
+  
+  # Conditional for max formant
+  max_formant = reactive({
+    if_else(input$gender == "female", 5500, 4000)
+  })
+  
+  # Set the parameters for the formant analysis
+  formant_arguments = reactive({
+                          list(0.001,        # Time step (s)
+                           5,            # Max. number of formants
+                           max_formant(),  # Maximum formant (Hz) <- change to be based on gender
+                           0.025,        # Window length (s)
+                           50)           # Pre-emphasis from (Hz)
+  })
+  
+  # Read in sound file
+  sound = reactive({
+    readWave(input$sound_file)
+  })
+  
+  # Make table for sound file
+  data_formants = reactive({
+    formants_extracter(data_wav, formant_arguments)
   })
   
   # Make vowel plot

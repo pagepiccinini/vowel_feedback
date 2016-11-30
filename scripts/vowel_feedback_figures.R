@@ -115,8 +115,8 @@ base_hill_m.plot = data_proto %>%
 
 
 ## ADD SPEAKER SPECIFIC POINTS TO A BASE ####
-#base_hagi_m.plot +
-base_hill_m.plot +
+base_hagi_m.plot +
+#base_hill_m.plot +
   geom_point(data = data_formants_clean, aes(x = f2_median, y = f1_median),
              color = "red", size = 3) +
   geom_path(data = data_formants_clean, aes(x = f2_median, y = f1_median),

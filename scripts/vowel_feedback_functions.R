@@ -1,7 +1,7 @@
 # Get formant information from a sound file
 formants_extracter = function(vowelfile, formant_arguments) {
 
-    # Set location paths for wav files and formant files, Note: spaces not allowed in path
+  # Set location paths for wav files and formant files, Note: spaces not allowed in path
   wav_loc = paste(getwd(), "/", vowelfile, sep = "")
   formant_loc = sub(wav_loc, pattern = ".wav", replacement = ".Formant")
   table_loc = sub(wav_loc, pattern = ".wav", replacement = ".txt")
