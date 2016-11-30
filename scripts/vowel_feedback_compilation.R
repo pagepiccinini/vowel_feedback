@@ -7,16 +7,20 @@ source("scripts/vowel_feedback_functions.R")
 
 
 ## SETTINGS FOR SPEECH ANALYSIS ####
-# Files to read in
+# Variables of file to read in
 vowel = "e"
 gender = "male"
 
+# Conditional for max formant
+max_formant = if_else(gender == "female", 5500, 5000)
+
 # Set the parameters for the formant analysis
-formant_arguments = list( 0.001, # Time step (s)
-                         5,     # Max. number of formants
-                         4000,  # Maximum formant (Hz) <- change to be based on gender
-                         0.025, # Window length (s)
-                         50    )# Pre-emphasis from (Hz)
+formant_arguments = list(0.001,        # Time step (s)
+                         5,            # Max. number of formants
+                         max_formant,  # Maximum formant (Hz) <- change to be based on gender
+                         0.025,        # Window length (s)
+                         50)           # Pre-emphasis from (Hz)
 
 
 ## RUN SCRIPTS ####
+source("scripts/vowel_feedback_formants.R")

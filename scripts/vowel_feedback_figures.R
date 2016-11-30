@@ -114,7 +114,7 @@ base_hill_m.plot = data_proto %>%
   theme(text = element_text(size = 16))
 
 
-## ADD SPEAKER SPECIFIC POINTS ####
+## ADD SPEAKER SPECIFIC POINTS TO A BASE ####
 #base_hagi_m.plot +
 base_hill_m.plot +
   geom_point(data = data_formants_clean, aes(x = f2_median, y = f1_median),
