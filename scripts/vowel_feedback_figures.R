@@ -20,9 +20,32 @@ data_formants_clean = data_formants %>%
   ungroup()
 
 
-## MAKE FIGURE ####
-# Make base plot
-base.plot = data_proto %>%
+## MAKE BASE FIGURE ####
+# Make base plot for Hagiwara (1997), female speaker
+base_hagi_f.plot = data_proto %>%
+  # Set study
+  filter(study == "Hagiwara (1997)") %>%
+  # Set gender
+  filter(gender == "female") %>%
+  # Make plot
+  ggplot(aes(x = f2, y = f1, label = vowel_ipa)) +
+  geom_point(size = 4) +
+  geom_text(nudge_x = 60, nudge_y = -20, size = 6) +
+  geom_segment(aes(x = max(f2) + 150, xend = max(f2) - ((max(f2) - min(f2)) / 2),
+                   y = min(f1) - 50, yend = max(f1) + 50)) +
+  geom_segment(aes(x = max(f2) - ((max(f2) - min(f2)) / 2), xend = min(f2 - 100),
+                   y = max(f1) + 50, yend = max(f1) + 50)) +
+  geom_segment(aes(x = min(f2) - 100, xend = min(f2) - 100,
+                   y = max(f1) + 50, yend = min(f1) - 50)) +
+  geom_segment(aes(x = min(f2) - 100, xend = max(f2) + 150,
+                   y = min(f1) - 50, yend = min(f1) - 50)) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  theme_void() +
+  theme(text = element_text(size = 16))
+
+# Make base plot for Hagiwara (1997), male speaker
+base_hagi_m.plot = data_proto %>%
   # Set study
   filter(study == "Hagiwara (1997)") %>%
   # Set gender
@@ -44,8 +67,56 @@ base.plot = data_proto %>%
   theme_void() +
   theme(text = element_text(size = 16))
 
-# Add speaker vowel
-base.plot +
+# Make base plot for Hillenbrand et al. (1995), female speaker
+base_hill_f.plot = data_proto %>%
+  # Set study
+  filter(study == "Hillenbrand et al. (1995)") %>%
+  # Set gender
+  filter(gender == "female") %>%
+  # Make plot
+  ggplot(aes(x = f2, y = f1, label = vowel_ipa)) +
+  geom_point(size = 4) +
+  geom_text(nudge_x = 60, nudge_y = -20, size = 6) +
+  geom_segment(aes(x = max(f2) + 150, xend = max(f2) - ((max(f2) - min(f2)) / 2),
+                   y = min(f1) - 50, yend = max(f1) + 50)) +
+  geom_segment(aes(x = max(f2) - ((max(f2) - min(f2)) / 2), xend = min(f2 - 100),
+                   y = max(f1) + 50, yend = max(f1) + 50)) +
+  geom_segment(aes(x = min(f2) - 100, xend = min(f2) - 100,
+                   y = max(f1) + 50, yend = min(f1) - 50)) +
+  geom_segment(aes(x = min(f2) - 100, xend = max(f2) + 150,
+                   y = min(f1) - 50, yend = min(f1) - 50)) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  theme_void() +
+  theme(text = element_text(size = 16))
+
+# Make base plot for Hillenbrand et al. (1995), male speaker
+base_hill_m.plot = data_proto %>%
+  # Set study
+  filter(study == "Hillenbrand et al. (1995)") %>%
+  # Set gender
+  filter(gender == "male") %>%
+  # Make plot
+  ggplot(aes(x = f2, y = f1, label = vowel_ipa)) +
+  geom_point(size = 4) +
+  geom_text(nudge_x = 60, nudge_y = -20, size = 6) +
+  geom_segment(aes(x = max(f2) + 150, xend = max(f2) - ((max(f2) - min(f2)) / 2),
+                   y = min(f1) - 50, yend = max(f1) + 50)) +
+  geom_segment(aes(x = max(f2) - ((max(f2) - min(f2)) / 2), xend = min(f2 - 100),
+                   y = max(f1) + 50, yend = max(f1) + 50)) +
+  geom_segment(aes(x = min(f2) - 100, xend = min(f2) - 100,
+                   y = max(f1) + 50, yend = min(f1) - 50)) +
+  geom_segment(aes(x = min(f2) - 100, xend = max(f2) + 150,
+                   y = min(f1) - 50, yend = min(f1) - 50)) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  theme_void() +
+  theme(text = element_text(size = 16))
+
+
+## ADD SPEAKER SPECIFIC POINTS ####
+#base_hagi_m.plot +
+base_hill_m.plot +
   geom_point(data = data_formants_clean, aes(x = f2_median, y = f1_median),
              color = "red", size = 3) +
   geom_path(data = data_formants_clean, aes(x = f2_median, y = f1_median),
