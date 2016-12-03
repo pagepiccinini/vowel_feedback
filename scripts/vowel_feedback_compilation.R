@@ -8,11 +8,11 @@ source("scripts/vowel_feedback_functions.R")
 
 ## SETTINGS FOR SPEECH ANALYSIS ####
 # Variables of file to read in
-vowel = "e"
+vowel = "i"
 gender = "male"
 
 # Conditional for max formant
-max_formant = if_else(gender == "female", 5500, 5000)
+max_formant = if_else(gender == "female", 5500, 4000)
 
 # Set the parameters for the formant analysis
 formant_arguments = list(0.001,        # Time step (s)
