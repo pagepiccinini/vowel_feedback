@@ -105,24 +105,9 @@ server <- function(input, output) {
   
   # Make vowel plot
   output$result_plot = renderPlot({
-    data_plot() %>%
-      ggplot(aes(x = f2, y = f1, label = vowel_ipa)) +
-      geom_point(size = 4) +
-      geom_text(nudge_x = 60, nudge_y = -20, size = 6) +
-      geom_segment(aes(x = max(data_plot()$f2) + 150,
-                       xend = max(data_plot()$f2) - ((max(data_plot()$f2) - min(data_plot()$f2)) / 2),
-                       y = min(data_plot()$f1) - 50, yend = max(data_plot()$f1) + 50)) +
-      geom_segment(aes(x = max(data_plot()$f2) - ((max(data_plot()$f2) - min(data_plot()$f2)) / 2),
-                       xend = min(data_plot()$f2 - 100),
-                       y = max(data_plot()$f1) + 50, yend = max(data_plot()$f1) + 50)) +
-      geom_segment(aes(x = min(data_plot()$f2) - 100, xend = min(data_plot()$f2) - 100,
-                       y = max(data_plot()$f1) + 50, yend = min(data_plot()$f1) - 50)) +
-      geom_segment(aes(x = min(data_plot()$f2) - 100, xend = max(data_plot()$f2) + 150,
-                       y = min(data_plot()$f1) - 50, yend = min(data_plot()$f1) - 50)) +
-      scale_x_reverse() +
-      scale_y_reverse() +
-      theme_void() +
-      theme(text = element_text(size = 16))
+    
+    base_plot(data_plot(), input$study, input$gender)
+
   })
   
 }
