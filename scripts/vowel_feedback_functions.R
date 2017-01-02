@@ -4,8 +4,8 @@ formants_extracter = function(vowelfile, formant_arguments) {
 
   # Set location paths for wav files and formant files, Note: spaces not allowed in path
   wav_loc = paste(getwd(), "/", vowelfile, sep = "")
-  formant_loc = sub(wav_loc, pattern = ".wav", replacement = ".Formant")
-  table_loc = sub(wav_loc, pattern = ".wav", replacement = ".txt")
+  formant_loc <<- sub(wav_loc, pattern = ".wav", replacement = ".Formant")
+  table_loc <<- sub(wav_loc, pattern = ".wav", replacement = ".txt")
   
   # Set arguments for tables
   tab_args = list( TRUE, # Include frame number
@@ -42,9 +42,6 @@ formants_extracter = function(vowelfile, formant_arguments) {
     mutate(vowel = vowel) %>%
     mutate(gender = gender)
   
-  #unlink(formant_loc)
-  #unlink(table_loc)
-
 }
 
 

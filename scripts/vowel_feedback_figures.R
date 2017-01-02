@@ -41,15 +41,20 @@ base_hill_m.plot = base_plot(data_proto, "Hillenbrand et al. (1995)", "male")
 ## ADD SPEAKER SPECIFIC POINTS TO A BASE ####
 # Select base plot
 #base_hagi_m.plot +
-base_hill_m.plot +
+vowel_plot = base_hill_m.plot +
   # Add bined data points of speaker
   geom_point(data = data_formants_clean, aes(x = f2_median, y = f1_median),
              color = "red", size = 3) +
   # Add a path with an arrow over time of productions
   geom_path(data = data_formants_clean, aes(x = f2_median, y = f1_median),
             arrow = arrow(), color = "red", lwd = 1)
+
+vowel_plot
   
-  
+# Save plot
+cairo_pdf("figures/vowel_plot.pdf", width = 6, height = 4.5)
+vowel_plot
+dev.off()
   
   
   
