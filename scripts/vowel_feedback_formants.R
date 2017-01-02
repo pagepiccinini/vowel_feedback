@@ -15,13 +15,13 @@ if(file.exists(paste("data/recordings/", vowel, "_", gender, ".wav", sep=""))) {
   rec_dur = 5
   rec_sound = rep(NA_real_, 16000 * rec_dur)
   
-    # (2) record sound, with delay for next line of code
-  record(rec_sound, 16000, 1)
+    # (2) record sound, with delay for next line of code, NOTE: currently in stereo
+  record(rec_sound, 16000, 2)
   Sys.sleep(6)
   
     # (3) save wav file and read in
   savewav(rec_sound, filename = paste("data/recordings/", vowel, "_", gender, ".wav", sep=""))
-  data_wav = paste("data/recordings/", vowel, "_", gender, ".wav", sep="")
+  #data_wav = paste("data/recordings/", vowel, "_", gender, ".wav", sep="")
 }
 
 
